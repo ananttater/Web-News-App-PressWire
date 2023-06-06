@@ -1,0 +1,120 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PressWire News</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    </head>
+    <body>
+
+        <!-- 
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+
+            The <nav> HTML element represents a section of a page whose 
+            purpose is to provide navigation links, either within the current 
+            document or to other documents. Common examples of navigation 
+            sections are menus, tables of contents, and indexes.
+         -->
+        <nav>
+            <div class="main-nav container flex">
+                <a href="#" onclick="reload()" class="company-logo"z>
+                    <img src="assets/justLogo.PNG" alt="company-logo">
+                </a>
+
+                <div class="nav-links">
+                    <ul class="flex">
+                        <li class="hover-link nav-item" id="sports" onclick="onNavItemClick('sports')">Sports</li>
+                        <li class="hover-link nav-item" id="finance" onclick="onNavItemClick('finance')">Finance</li>
+                        <li class="hover-link nav-item" id="technology" onclick="onNavItemClick('technology')">Technology</li>
+                        <li class="hover-link nav-item" id="space" onclick="onNavItemClick('space')">Space</li>
+                        <li class="hover-link nav-item" id="travel" onclick="onNavItemClick('travel')">Travel</li>
+                        <li class="hover-link nav-item" id="world" onclick="onNavItemClick('world')">World</li>
+                    </ul>
+                </div>
+
+                <div class="search-bar flex">
+                    <input type="text" id="search-input" class="search-input" placeholder="e.g. WWDC">
+                    <button id="search-button" class="search-button">Search</button>
+                </div>
+            </div>
+        </nav>
+
+<!-- 
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+
+    The <main> HTML element represents the dominant content 
+    of the <body> of a document. The main content area 
+    consists of content that is directly related to or expands 
+    upon the central topic of a document, or the central 
+    functionality of an application.
+ -->
+        <main>
+            <div class="cards-container container flex" id="cards-container">
+            
+            </div>
+            
+        </main>
+<!-- 
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    
+    The <template> HTML element is a mechanism for holding HTML 
+    that is not to be rendered immediately when a page is loaded 
+    but may be instantiated subsequently during runtime using JavaScript.
+
+    Think of a template as a content fragment that is being stored for 
+    subsequent use in the document. While the parser does process the 
+    contents of the <template> element while loading the page, it does so 
+    only to ensure that those contents are valid; the element's contents are not rendered, however.
+ -->
+        <template id="template-news-card">
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+                </div>
+                <div class="card-content">
+                    <h3 id="news-title">This is the Title</h3>
+                    <h6 class="news-source" id="news-source">End Gadget 26/08/2023</h6>
+                    <p class="news-desc" id="news-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe quis voluptatum quisquam vitae doloremque facilis molestias quae ratione cumque!</p>
+                </div>
+            </div>
+        </template>
+
+        
+
+        <script src="script.js"></script>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 
+        Nav Bar:
+        Sports
+        Finance
+        Travel
+        AI
+        Technology
+
+        Hash Code for nav bar background: black
+    -->
