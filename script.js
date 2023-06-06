@@ -1,5 +1,8 @@
-const API_KEY = "d610846649df47cb9e6c28ad453c53bb";
-const url = "https://newsapi.org/v2/everything?q=";
+// const API_KEY = "d610846649df47cb9e6c28ad453c53bb";
+// const url = "https://newsapi.org/v2/everything?q=";
+
+// const API_KEY = "pub_24112f08fbfebe6f0376a79ab781b250e8aae";
+const url = "https://newsdata.io/api/1/news?apikey=pub_24112f08fbfebe6f0376a79ab781b250e8aae&q="
 
 window.addEventListener("load", ()=> fetchNews("India"));
 // ()=> arrow functions do not allow duplicate parameters, 
@@ -11,9 +14,9 @@ function reload(){
 }
 
 async function fetchNews(query) {
-    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+    const res = await fetch(`${url}${query}`);
     const data = await res.json();
-    bindData(data.articles);
+    bindData(data.results);
 }
 
 function bindData(articles) {
@@ -23,7 +26,7 @@ function bindData(articles) {
     cardsContainer.innerHTML = "";
 
     articles.forEach((article) => {
-        if (!article.urlToImage) return;
+        if (!article.image_url || article.language!="english") return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article);
         cardsContainer.appendChild(cardClone);
@@ -43,23 +46,23 @@ function fillDataInCard(cardClone, article){
     const newsSource = cardClone.querySelector('#news-source');
     const newsDesc = cardClone.querySelector('#news-desc');
 
-    newsImg.src = article.urlToImage;
+    newsImg.src = article.image_url;
     newsTitle.innerHTML = article.title;
     newsDesc.innerHTML = article.description;
 
-    const date = new Date(article.publishedAt).toLocaleString("en-US", {
-        timeZone: "Asia/Jakarta"
-    })
+    // const date = new Date(article.pubDate).toLocaleString("en-US", {
+    //     timeZone: "Asia/Jakarta"
+    // })
 
     // The toLocaleString() method returns a string with a 
     // language-sensitive representation of this date. In 
     // implementations with Intl.DateTimeFormat API support, 
     // this method simply calls Intl.DateTimeFormat.
 
-    newsSource.innerHTML = `${article.source.name} • ${date}`;
+    newsSource.innerHTML = `${article.source_id} • ${article.pubDate}`;
 
     cardClone.firstElementChild.addEventListener("click", () => {
-        window.open(article.url, "_blank");
+        window.open(article.link, "_blank");
     });
 }
 
