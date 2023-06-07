@@ -1,5 +1,10 @@
 # PressWire-News-Website-Project
 
+<h3> Note: When opening the webpage kindly wait for 30 sec. and so, because it takes time to load content due to free API. </h3> 
+Visit PressWire News: https://ananttater.github.io/PressWire-News/
+
+<br>
+<br>
 The news website created using HTML, CSS, JavaScript, and the NewsAPI.org API is an interactive and dynamic platform that delivers up-to-date news content to its users. The website seamlessly integrates various technologies to provide a user-friendly and engaging news browsing experience.
 <ul>
 
