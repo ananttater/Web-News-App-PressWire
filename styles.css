@@ -129,14 +129,18 @@ main{
 }
 
 .card{
-    width: 360px;
+    width: 350px;
     min-height: 400px;
+    max-height: 550px;
     box-shadow: 0 0 4px black;
     border-radius: 4px;
     cursor: pointer;
     background-color: white;
     overflow: hidden;
     transition: all 0.3s;
+    z-index: 1;
+    margin-bottom: 10px;
+    border-bottom: 3px solid red;
 }
 
 .card:hover{
@@ -153,6 +157,7 @@ main{
 }
 
 .card-content{
+    /* border: 15px solid white; */
     padding: 12px;
 }
 
