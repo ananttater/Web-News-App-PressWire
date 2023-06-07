@@ -1,11 +1,7 @@
-// https://mediastack.com/
+// const API_KEY = "ca8c8312b9e94aad91d9a7e73b77cb68";
+const url = "https://api.worldnewsapi.com/search-news?api-key=ca8c8312b9e94aad91d9a7e73b77cb68&text=";
 
-// const API_KEY = "d610846649df47cb9e6c28ad453c53bb";
-// const url = "https://newsapi.org/v2/everything?q=";
-
-const url = "http://api.mediastack.com/v1/news?access_key=f543fe94b4cb563de0feb16f9945f3d7&keywords=";
-
-window.addEventListener("load", ()=> fetchNews("world"));
+window.addEventListener("load", ()=> fetchNews(""));
 // ()=> arrow functions do not allow duplicate parameters, 
 // whether in strict or non-strict mode.Duplicate parameters 
 // will cause a Syntax Error to be thrown. 
@@ -15,9 +11,9 @@ function reload(){
 }
 
 async function fetchNews(query) {
-    const res = await fetch(`${url}${query}`);
-    const files = await res.json();
-    bindData(files.data);
+    const res = await fetch(`${url}${query}&earliest-publish-date=2023-01-25`);
+    const data = await res.json();
+    bindData(data.news);
 }
 
 function bindData(articles) {
@@ -27,7 +23,7 @@ function bindData(articles) {
     cardsContainer.innerHTML = "";
 
     articles.forEach((article) => {
-        if (!article.image) return;
+        // if (!article.image) return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article);
         cardsContainer.appendChild(cardClone);
@@ -46,21 +42,23 @@ function fillDataInCard(cardClone, article){
     const newsTitle = cardClone.querySelector('#news-title');
     const newsSource = cardClone.querySelector('#news-source');
     const newsDesc = cardClone.querySelector('#news-desc');
-
-    newsImg.src = article.image;
+    
+    if(!article.image) newsImg.src = "https://via.placeholder.com/400x200";
+    else newsImg.src = article.image;
+    
     newsTitle.innerHTML = article.title;
-    newsDesc.innerHTML = article.description;
+    newsDesc.innerHTML = article.text;
 
-    const date = new Date(article.published_at).toLocaleString("en-US", {
-        timeZone: "Asia/Jakarta"
-    })
+    // const date = new Date(article.publishedAt).toLocaleString("en-US", {
+    //     timeZone: "Asia/Jakarta"
+    // })
 
     // The toLocaleString() method returns a string with a 
     // language-sensitive representation of this date. In 
     // implementations with Intl.DateTimeFormat API support, 
     // this method simply calls Intl.DateTimeFormat.
 
-    newsSource.innerHTML = `${article.source} • ${date}`;
+    newsSource.innerHTML = `${article.author} • ${article.publish_date}`;
 
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
