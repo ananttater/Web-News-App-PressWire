@@ -2,6 +2,7 @@
 
 <h3> Note: When opening the webpage kindly wait for 30 sec. and so, because it takes time to load content due to free API. </h3> 
 Visit PressWire News: https://ananttater.github.io/PressWire-News/
+or https://presswirenews.onrender.com/
 
 <br>
 <br>
